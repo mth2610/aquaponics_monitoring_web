@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.css">
+{% endblock %}
+
+{% block content %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Number of pipes: {{ number_of_pipes }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-picture-o fa-fw"></i> Monitoring images
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Actions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="#">Last image</a>
+                                </li>
+                                <li><a href="#">Last 1 hour </a>
+                                </li>
+                                <li><a href="#">Last 1 day </a>
+                                </li>
+                                <li><a href="#">Last 1 month</a>
+                                </li>
+                                <li><a href="#">Last 1 year</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">More image analysis</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel-body">
+                    <div>
+                      <img src="data:image/png;base64, {{image}}"  alt="Smiley face" height="400"/>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
+{% endblock %}

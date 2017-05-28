@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+{% block additional_css %}
+
+{% endblock %}
+
+{% block content %}
+<div id="page-wrapper">
+    {% for site in site_code %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Current data of {{ site.site_code }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+    {% for sensor in site.sensors %}
+        <div class="col-lg-3 col-md-6">
+            <div class='panel panel-{{sensor.pannel_color}}'>
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="{{sensor.sensor_icon}}"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{sensor.value}} </div>
+                            <div>{{sensor.unit}}</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/sensor_data/details/?sensor_code={{sensor.sensor_code}}&site_code={{site.site_code}}">
+                    <div class="panel-footer">
+                        <span class="pull-left">{{sensor.sensor_code}} </span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+     {% endfor %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Actions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="morris-area-chart"></div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-picture-o fa-fw"></i> Monitoring images
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Actions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="#">Last image</a>
+                                </li>
+                                <li><a href="#">Last 1 hour </a>
+                                </li>
+                                <li><a href="#">Last 1 day </a>
+                                </li>
+                                <li><a href="#">Last 1 month</a>
+                                </li>
+                                <li><a href="#">Last 1 year</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">More image analysis</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div>
+                      <img src="/media/images/system1/images.jpg" alt="Smiley face" height="400">
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div>
+                      <img src="/media/images/system1/images.jpg" alt="Smiley face" height="400">
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+
+    {% endfor %}
+    <!-- /.row -->
+</div>
+{% endblock %}
+
+<!-- {% block additional_js %}
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.8.1.min.js"></script>
+{% endblock %} -->
